@@ -1,1 +1,1 @@
-from .crf import CRF
+from .crf import CRFPosTagger

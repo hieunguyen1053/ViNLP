@@ -3,7 +3,7 @@ import shutil
 import sklearn_crfsuite
 
 
-class CRF(sklearn_crfsuite.CRF):
+class CRFPosTagger(sklearn_crfsuite.CRF):
     def save(self, model_filename):
         destination = model_filename
         source = self.modelfile.name
@@ -11,5 +11,5 @@ class CRF(sklearn_crfsuite.CRF):
 
     @staticmethod
     def load(model_filename):
-        model = CRF(model_filename=model_filename)
+        model = CRFPosTagger(model_filename=model_filename)
         return model
