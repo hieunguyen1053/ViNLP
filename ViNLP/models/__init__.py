@@ -1,1 +1,1 @@
-from .crf import CRFPosTagger
+from .crf_pos_tagger import CRFPosTagger
