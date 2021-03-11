@@ -1,6 +1,6 @@
 from os.path import join
 
-from ViNLP.corpus.corpus import Corpus
+from .corpus import Corpus
 
 
 class TaggedCorpus(Corpus):

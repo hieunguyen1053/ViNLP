@@ -1,24 +1,14 @@
-import re
 from os.path import dirname, join
 
 from ViNLP.corpus import Dictionary
+
+from .base_feature import BaseFeature
 
 words = Dictionary(join(dirname(__file__), "..", "data", "Viet74K.txt")).words
 lower_words = set([word.lower() for word in words])
 
 
-class TaggedFeature:
-    def transform(self, sentences):
-        X = [self.sentence2features(s) for s in sentences]
-        y = [self.sentence2labels(s) for s in sentences]
-        return X, y
-
-    def sentence2features(self, s):
-        return [self.word2features(s, i) for i in range(len(s))]
-
-    def sentence2labels(self, s):
-        return [row[-1] for row in s]
-
+class TaggedFeature(BaseFeature):
     def word2features(self, s, i):
         word = s[i][0]
         features = {
