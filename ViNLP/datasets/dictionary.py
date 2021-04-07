@@ -1,4 +1,4 @@
-from ViNLP.utils.file_io import read
+from ..utils.file_io import read
 
 class Dictionary:
     def __init__(self, filepath):
