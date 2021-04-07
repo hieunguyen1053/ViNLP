@@ -1,14 +1,15 @@
-from os.path import dirname, join
+from os import path
 
-from ViNLP.corpus import Dictionary
-
+from ..datasets.dictionary import Dictionary
 from .base_feature import BaseFeature
 
-words = Dictionary(join(dirname(__file__), "..", "data", "Viet74K.txt")).words
+words = Dictionary(path.join(path.dirname(__file__), "..", "data", "Viet74K.txt")).words
 lower_words = set([word.lower() for word in words])
+
 
 def is_in_dict(word):
     return str(word.lower() in lower_words)
+
 
 class TokenizeFeature(BaseFeature):
     def word2features(self, s, i):

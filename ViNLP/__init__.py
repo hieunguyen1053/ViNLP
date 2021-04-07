@@ -1,3 +1,4 @@
-from .pipeline.word_tokenize import word_tokenize
-from .pipeline.pos_tag import pos_tag
-from .pipeline.add_accent import add_accents
+from .pipelines.word_tokenize import word_tokenize
+from .pipelines.pos_tag import pos_tag
+
+__author__ = "Nguyễn Trọng Hiếu"
