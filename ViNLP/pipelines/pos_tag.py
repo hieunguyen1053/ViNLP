@@ -16,5 +16,5 @@ def pos_tag(sentence):
 
     output = []
     for tag, token in zip(tags, tokens):
-        output.append([token, tag])
+        output.append((token, tag))
     return output
