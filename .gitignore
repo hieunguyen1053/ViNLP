@@ -2,3 +2,5 @@
 /.vscode
 **/.DS_Store
 **/__pycache__
+ViNLP/data/vlsp2013
+ViNLP/data/vlsp2016
