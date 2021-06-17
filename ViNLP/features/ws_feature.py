@@ -42,11 +42,11 @@ class WSFeature(BaseFeature):
                     '[-2].istitle'      : word2.istitle(),
                     '[-2].is_in_dict'   : is_in_dict(word2),
                     '[-2,-1]'           : "%s %s" % (word2, word1),
-                    '[-2,-1].istitle'   : ("%s %s" % (word2, word1)).istitle(),
-                    '[-2,-1].is_in_dict': is_in_dict("%s %s" % (word2, word1)),
+                    '[-2,-1].istitle'   : word2.istitle() and word1.istitle(),
+                    '[-2,-1].is_in_dict': is_in_dict(word2) and is_in_dict(word1),
                     '[-2,0]'            : "%s %s %s" % (word2, word1, word),
-                    '[-2,0].istitle'    : ("%s %s %s" % (word2, word1, word)).istitle(),
-                    '[-2,0].is_in_dict' : is_in_dict("%s %s %s" % (word2, word1, word)),
+                    '[-2,0].istitle'    : word2.istitle() and word1.istitle() and word.istitle(),
+                    '[-2,0].is_in_dict' : is_in_dict(word2) and is_in_dict(word1) and is_in_dict(word),
                 })
         else:
             features['BOS'] = True
@@ -60,8 +60,8 @@ class WSFeature(BaseFeature):
                 '[+1].istitle'     : word1.istitle(),
                 '[+1].is_in_dict'  : is_in_dict(word1),
                 '[0,+1]'           : "%s %s" % (word, word1),
-                '[0,+1].istitle'   : ("%s %s" % (word, word1)).istitle(),
-                '[0,+1].is_in_dict': is_in_dict("%s %s" % (word, word1)),
+                '[0,+1].istitle'   : word.istitle() and word1.istitle(),
+                '[0,+1].is_in_dict': is_in_dict(word) and is_in_dict(word1),
             })
             if i < len(s) - 2:
                 word2 = s[i + 2][0]
@@ -72,11 +72,11 @@ class WSFeature(BaseFeature):
                     '[+2].istitle'      : word2.istitle(),
                     '[+2].is_in_dict'   : is_in_dict(word2),
                     '[+1,+2]'           : "%s %s" % (word1, word2),
-                    '[+1,+2].istitle'   : ("%s %s" % (word1, word2)).istitle(),
-                    '[+1,+2].is_in_dict': is_in_dict("%s %s" % (word1, word2)),
+                    '[+1,+2].istitle'   : word1.istitle() and word2.istitle(),
+                    '[+1,+2].is_in_dict': is_in_dict(word1) and is_in_dict(word2),
                     '[0,+2]'            : "%s %s %s" % (word, word1, word2),
-                    '[0,+2].istitle'    : ("%s %s %s" % (word, word1, word2)).istitle(),
-                    '[0,+2].is_in_dict' : is_in_dict("%s %s %s" % (word, word1, word2)),
+                    '[0,+2].istitle'    : word.istitle() and word1.istitle() and word2.istitle(),
+                    '[0,+2].is_in_dict' : is_in_dict(word) and is_in_dict(word1) and is_in_dict(word2),
                 })
         else:
             features['EOS'] = True
@@ -86,7 +86,7 @@ class WSFeature(BaseFeature):
             wordp1 = s[i + 1][0]
             features.update({
                 '[-1,+1]'           : "%s %s %s" % (wordn1, word, wordp1),
-                '[-1,+1].istitle'   : ("%s %s %s" % (wordn1, word, wordp1)).istitle(),
-                '[-1,+1].is_in_dict': is_in_dict("%s %s %s" % (wordn1, word, wordp1)),
+                '[-1,+1].istitle'   : wordn1.istitle() and word.istitle() and wordp1.istitle(),
+                '[-1,+1].is_in_dict': is_in_dict(wordn1) and is_in_dict(word) and is_in_dict(wordp1),
             })
         return features

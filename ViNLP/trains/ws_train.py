@@ -10,7 +10,7 @@ X_train, y_train = postag_features.transform(train_set.data)
 model = WS_CRF(
     c1=1.0,
     c2=1e-3,
-    max_iterations=50,
+    max_iterations=100,
     all_possible_transitions=True,
     verbose=True,
 )
