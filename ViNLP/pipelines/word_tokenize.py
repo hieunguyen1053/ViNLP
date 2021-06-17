@@ -1,16 +1,16 @@
 from os import path
 
-from ..features.tokenize_feature import TokenizeFeature
-from ..models.crf_word_tokenizer import CRFTokenizer
+from ..features.ws_feature import WSFeature
+from ..models.ws_crf import WS_CRF
 from ..utils.tokenize import tokenize
 
 
 def word_tokenize(sentence):
-    crf_tokenizer = CRFTokenizer.load(path.join(path.dirname(__file__), "bin", "tokenize.crfsuite"))
+    crf_tokenizer = WS_CRF.load(path.join(path.dirname(__file__), "bin", "ws.crfsuite"))
 
     tokens = tokenize(sentence)
     _tokens = [(token, "X") for token in tokens]
-    x = TokenizeFeature().transform([_tokens])[0]
+    x = WSFeature().transform([_tokens])[0]
     tags = crf_tokenizer.predict(x)[0]
 
     output = []

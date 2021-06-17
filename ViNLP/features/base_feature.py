@@ -1,17 +1,18 @@
 from abc import ABC, abstractmethod
 
+
 class BaseFeature(ABC):
-    def transform(self, sentences):
-        X = [self.sentence2features(s) for s in sentences]
-        y = [self.sentence2labels(s) for s in sentences]
+    def transform(self, sents):
+        X = [self.sentence2features(sent) for sent in sents]
+        y = [self.sentence2labels(sent) for sent in sents]
         return X, y
 
-    def sentence2features(self, s):
-        return [self.word2features(s, i) for i in range(len(s))]
+    def sentence2features(self, sent):
+        return [self.word2features(sent, i) for i in range(len(sent))]
 
-    def sentence2labels(self, s):
-        return [row[-1] for row in s]
+    def sentence2labels(self, sent):
+        return [row[-1] for row in sent]
 
     @abstractmethod
     def word2features(self, s, i):
-        pass
+        raise NotImplementedError
