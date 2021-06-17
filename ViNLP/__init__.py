@@ -1,6 +1,6 @@
-from .pipelines.word_tokenize import word_tokenize
-from .pipelines.pos_tag import pos_tag
-from .pipelines.chunking import chunk
-from .pipelines.ner import ner
+from .pipeline.word_tokenize import word_tokenize
+from .pipeline.pos_tag import pos_tag
+from .pipeline.chunking import chunk
+from .pipeline.ner import ner
 
 __author__ = "Nguyễn Trọng Hiếu"
