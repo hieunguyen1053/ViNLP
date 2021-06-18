@@ -7379,8 +7379,8 @@ bửu vật
 byte
 c, C
 c
-c 
-C 
+c
+C
 C
 C.I.F
 ca
@@ -21877,7 +21877,7 @@ dynamo
 đến ngành đến ngọn
 đến ngày
 đến nỗi
-đến nỗi 
+đến nỗi
 đến nơi
 đến nơi đến chốn
 đến nước
@@ -24874,7 +24874,7 @@ euro
 êu ôi
 f, F
 f
-F 
+F
 F
 F.O.B
 fa
@@ -27431,7 +27431,7 @@ gọi họ
 gọi hỏi
 gọi hồn
 gọi là
-gọi là 
+gọi là
 gọi lính
 gọi như gọi đò
 gọi như hò đò
@@ -31659,7 +31659,7 @@ ju-đô
 jun
 k, K
 k
-K 
+K
 Ka Beo
 ka-ki
 ka-li
@@ -31921,7 +31921,7 @@ kề rề
 kề vai sát cánh
 kể
 kể cả
-kể cả 
+kể cả
 kể chi
 kể chuyện
 kể công
@@ -35041,7 +35041,7 @@ làm đổ
 làm đồng
 làm gái
 làm gì
-làm gì 
+làm gì
 làm già
 làm giả
 làm giá
@@ -40732,7 +40732,7 @@ một lèo
 một liều ba bảy cũng liều
 một lòng
 một lòng một dạ
-một lòng một dạ 
+một lòng một dạ
 một lô một lốc
 một lời
 một lời nói, một đọi máu
@@ -41478,7 +41478,7 @@ mỹ vị
 mỹ ý
 n,N
 n
-N 
+N
 N
 na
 Na
@@ -48637,7 +48637,7 @@ phải cái
 phải cái dại rái đến già
 phải cái tội
 phải chăng
-phải chăng2 
+phải chăng2
 phải chi
 phải cung sợ làn cây cong
 phải dấu
@@ -52282,7 +52282,7 @@ ra trò
 ra tuồng
 ra vào
 ra vẻ
-ra vẻ 
+ra vẻ
 ra viện
 ra ý
 rà
@@ -59806,7 +59806,7 @@ thi xã
 thì
 thì chớ
 thì chớ kể
-thì có 
+thì có
 thì có
 thì giờ
 thì là
@@ -65720,7 +65720,7 @@ trộm nghe
 trộm nghĩ
 trộm phép
 trộm vía
-trộm vía 
+trộm vía
 trôn
 trôn kim
 trôn ốc
