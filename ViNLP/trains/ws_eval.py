@@ -38,6 +38,6 @@ postag_features = WSFeature()
 X_test, y_test = postag_features.transform(test_set.data)
 
 
-model = WS_CRF.load("ViNLP/pipelines/bin/ws.crfsuite")
+model = WS_CRF.load("ViNLP/pipeline/bin/ws.crfsuite")
 y_pred = model.predict(X_test)
 print(f_measure(y_test, y_pred))

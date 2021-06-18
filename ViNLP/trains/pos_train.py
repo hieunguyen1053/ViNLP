@@ -16,4 +16,4 @@ model = POS_CRF(
 )
 
 model.fit(X_train, y_train)
-model.save("ViNLP/pipelines/bin/pos.crfsuite")
+model.save("ViNLP/pipeline/bin/pos.crfsuite")

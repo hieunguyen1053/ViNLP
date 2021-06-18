@@ -16,4 +16,4 @@ model = WS_CRF(
 )
 
 model.fit(X_train, y_train)
-model.save("ViNLP/pipelines/bin/ws.crfsuite")
+model.save("ViNLP/pipeline/bin/ws.crfsuite")
