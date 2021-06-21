@@ -79,4 +79,5 @@ def _ner():
     }
     return json.dumps(resp, ensure_ascii=False)
 
-app.run()
+if __name__=="__main__":
+    app.run()
