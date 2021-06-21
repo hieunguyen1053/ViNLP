@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="static/style-vis.css" />
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <script type="text/javascript" src="static/client/lib/jquery.min.js"></script>
+    <script type="text/javascript" src="static/client/lib/jquery.svg.min.js"></script>
+    <script type="text/javascript" src="static/client/lib/jquery.svgdom.min.js"></script>
+    <script type="text/javascript" src="static/client/lib/webfont.js"></script>
+    <script type="text/javascript" src="static/client/src/configuration.js"></script>
+    <script type="text/javascript" src="static/client/src/util.js"></script>
+    <script type="text/javascript" src="static/client/src/annotation_log.js"></script>
+    <script type="text/javascript" src="static/client/src/dispatcher.js"></script>
+    <script type="text/javascript" src="static/client/src/url_monitor.js"></script>
+    <script type="text/javascript" src="static/client/src/visualizer.js"></script>
+    <script type="text/javascript" src="static/client/tags.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <label for="text" class="form-label">— Text to annotate —</label>
+                <textarea class="form-control" rows="2" id="text" placeholder="VD: Tôi sống ở Hồ Chí Minh"
+                    autofocus=""></textarea>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col text-center">
+                <button id="submit" type="button" class="btn btn-primary">Analyze</button>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div id="word_seg_wrapper">
+                <div id="word_seq"></div>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div id="pos_tag_wrapper">
+                <div id="pos_tag"></div>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div id="chunking_wrapper">
+                <div id="chunking_wrapper"></div>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div id="ner_wrapper">
+                <div id="ner"></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        $("#submit").click(() => {
+            var sent = $("#text").val();
+            $.post("/api/ws", { sent: sent })
+                .done(function (data) {
+                    $("#word_seg_wrapper h5").remove();
+                    $("#word_seg_wrapper #word_seg").remove();
+                    $("#word_seg_wrapper").append('<h5 class="text-primary">Word Segmentation</h5>');
+                    $("#word_seg_wrapper").append("<div id='word_seg'></div>");
+                    Util.embed("word_seg", WS, JSON.parse(data), []);
+                });
+
+            $.post("/api/pos", { sent: sent })
+                .done(function (data) {
+                    $("#pos_tag_wrapper h5").remove();
+                    $("#pos_tag_wrapper #pos_tag").remove();
+                    $("#pos_tag_wrapper").append('<h5 class="text-primary">Part-of-Speech</h5>');
+                    $("#pos_tag_wrapper").append("<div id='pos_tag'></div>");
+                    Util.embed("pos_tag", POSTAG, JSON.parse(data), []);
+                });
+
+            $.post("/api/chunk", { sent: sent })
+                .done(function (data) {
+                    $("#chunking_wrapper h5").remove();
+                    $("#chunking_wrapper #chunking").remove();
+                    $("#chunking_wrapper").append('<h5 class="text-primary">Chunking</h5>');
+                    $("#chunking_wrapper").append("<div id='chunking'></div>");
+                    Util.embed("chunking", CHUNK, JSON.parse(data), []);
+                });
+
+            $.post("/api/ner", { sent: sent })
+                .done(function (data) {
+                    $("#ner_wrapper h5").remove();
+                    $("#ner_wrapper #ner").remove();
+                    $("#ner_wrapper").append('<h5 class="text-primary">Named Entity Recognition</h5>');
+                    $("#ner_wrapper").append("<div id='ner'></div>");
+                    Util.embed("ner", NER, JSON.parse(data), []);
+                });
+        });
+    </script>
+</body>
+
+</html>
