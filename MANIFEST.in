@@ -1,1 +1,2 @@
 include ViNLP/data/Viet74K.txt
+include ViNLP/pipeline/bin/*.crfsuite
