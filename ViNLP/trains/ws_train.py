@@ -4,8 +4,8 @@ from ..models.ws_crf import WS_CRF
 
 train_set = WSDataset('ViNLP/data/vlsp2013/ws/train.txt')
 
-postag_features = WSFeature()
-X_train, y_train = postag_features.transform(train_set.data)
+ws_features = WSFeature()
+X_train, y_train = ws_features.transform(train_set.data)
 
 model = WS_CRF(
     c1=1.0,

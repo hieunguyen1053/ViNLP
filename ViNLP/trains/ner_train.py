@@ -5,9 +5,9 @@ from ..models.ner_crf import NER_CRF
 train_set = NERDataset('ViNLP/data/vlsp2016/train.txt')
 dev_set = NERDataset('ViNLP/data/vlsp2016/dev.txt')
 
-postag_features = NERFeature()
-X_train, y_train = postag_features.transform(train_set.data)
-X_dev, y_dev = postag_features.transform(dev_set.data)
+ner_features = NERFeature()
+X_train, y_train = ner_features.transform(train_set.data)
+X_dev, y_dev = ner_features.transform(dev_set.data)
 
 model = NER_CRF(
     c1=1.0,
