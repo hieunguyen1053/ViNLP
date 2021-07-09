@@ -29,7 +29,7 @@ $ pip install ViNLP
 ## Tutorials
 
 - [1. Word Segmentation](#1-word-segmentation)
-- [2. Sentence Segmentation](#1-sentence-segmentation)
+- [2. Sentence Segmentation](#2-sentence-segmentation)
 - [3. POS Tagging](#2-pos-tagging)
 - [4. Chunking](#3-chunking)
 - [5. Named Entity Recognition](#4-named-entity-recognition)
