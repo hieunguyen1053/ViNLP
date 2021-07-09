@@ -7,7 +7,7 @@ dev_set = ChunkDataset('ViNLP/data/vlsp2016/dev.txt')
 
 postag_features = ChunkFeature()
 X_train, y_train = postag_features.transform(train_set.data)
-X_dev, y_dev = postag_features.transform(train_set.data)
+X_dev, y_dev = postag_features.transform(dev_set.data)
 
 model = Chunk_CRF(
     c1=1.0,
