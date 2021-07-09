@@ -27,7 +27,6 @@ class SSFeature(BaseFeature):
         }
         if i > 0:
             word1 = s[i - 1][0]
-            tag1  = s[i - 1][1]
             features.update({
                 '[-1]'           : word1,
                 '[-1].lower'     : word1.lower(),
@@ -35,11 +34,8 @@ class SSFeature(BaseFeature):
                 '[-1].istitle'   : word1.istitle(),
                 '[-1].is_punct'  : is_punct(word1),
                 '[-1].has_punct' : has_punct(word1),
-                '[-1].tag'       : tag1,
                 '[-1,0]'         : "%s_%s" % (word1, word),
             })
-        else:
-            features['BOS'] = True
 
         if i < len(s) - 1:
             word1 = s[i + 1][0]
@@ -51,14 +47,5 @@ class SSFeature(BaseFeature):
                 '[+1].is_punct'    : is_punct(word1),
                 '[+1].has_punct'   : has_punct(word1),
                 '[0,+1]'           : "%s_%s" % (word, word1),
-            })
-        else:
-            features['EOS'] = True
-
-        if 0 < i < len(s) - 1:
-            wordn1 = s[i - 1][0]
-            wordp1 = s[i + 1][0]
-            features.update({
-                '[-1,+1]' : "%s_%s_%s" % (wordn1, word, wordp1),
             })
         return features

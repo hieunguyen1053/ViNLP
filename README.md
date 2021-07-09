@@ -1,5 +1,7 @@
 # ViNLP
 
+All task are trained on VLSP2013 and VLSP2016
+
 ## Installation
 
 To install ViNLP:
@@ -27,9 +29,10 @@ $ pip install ViNLP
 ## Tutorials
 
 - [1. Word Segmentation](#1-word-segmentation)
-- [2. POS Tagging](#2-pos-tagging)
-- [3. Chunking](#3-chunking)
-- [4. Named Entity Recognition](#4-named-entity-recognition)
+- [2. Sentence Segmentation](#1-sentence-segmentation)
+- [3. POS Tagging](#2-pos-tagging)
+- [4. Chunking](#3-chunking)
+- [5. Named Entity Recognition](#4-named-entity-recognition)
 
 ### 1. Word Segmentation
 
@@ -43,7 +46,21 @@ Usage
 ['Hà_Nội', 'test', 'nhanh', 'SARS-CoV-2', 'cho', 'hành_khách', 'từ', 'TP.HCM', 'đến', 'sân_bay', 'Nội_Bài']
 ```
 
-### 2. POS Tagging
+### 2. Sentence Segmentation
+
+Usage
+
+```python
+>>> from ViNLP import sent_tokenize
+>>> sentences = 'Trước đó, hồi tháng 6, qua lấy mẫu xét nghiệm tầm soát Covid-19, ngành y tế phát hiện 11 ca dương tính với SARS-CoV-2 tại công ty này. Mới đây, qua xét nghiệm ghi nhận thêm 4 công nhân nghi dương tính. Trước tình hình trên, phía công ty đã lên phương án cho công nhân tạm thời nghỉ việc.'
+
+>>> sent_tokenize(sentence)
+['Trung tâm Y tế TP Thủ Đức cho hay trước đó khi xác định được các trường hợp F0 tại công ty nói trên , các F1 , F2 đã được cách ly theo quy định .',
+'Nhà xưởng nơi phát hiện ca F0 tạm thời đóng cửa .',
+'Ngày 9-7 , ngành y tế tiếp tục lấy mẫu xét nghiệm tại công ty để truy tìm các ca dương tính .']
+```
+
+### 3. POS Tagging
 
 Usage
 
@@ -66,7 +83,7 @@ Usage
  ('nhất', 'R')]
 ```
 
-## 3. Chunking
+## 4. Chunking
 
 Usage
 
@@ -85,7 +102,7 @@ Usage
  ('Mỹ', 'Np', 'B-NP')]
 ```
 
-## 4. Named Entity Recognition
+## 5. Named Entity Recognition
 
 Usage
 
