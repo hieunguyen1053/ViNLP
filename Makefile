@@ -13,9 +13,8 @@ clean-pyc:
 	find . -name '*~' -exec rm -f {} +
 	find . -name '__pycache__' -exec rm -fr {} +
 
-release: clean
-	python setup.py sdist upload
-	python setup.py bdist_wheel upload
+release: clean dist
+	twine upload dist/*
 
 dist: clean
 	python setup.py sdist

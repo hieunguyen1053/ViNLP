@@ -1,6 +1,6 @@
 # ViNLP
 
-All task are trained on VLSP2013 and VLSP2016
+All tasks are trained on VLSP2013 and VLSP2016
 
 ## Installation
 

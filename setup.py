@@ -1,14 +1,13 @@
-import pathlib
 from setuptools import setup
 
-HERE = pathlib.Path(__file__).parent
-README = (HERE / "README.md").read_text()
+with open("README.md", "r", encoding="utf-8") as fh:
+    long_description = fh.read()
 
 setup(
     name="ViNLP",
-    version="1.0.5",
+    version="1.2.0",
     description="NLP package for Vietnamese",
-    long_description=README,
+    long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/hieunguyen1053/ViNLP",
     author="Hieu Nguyen",
@@ -24,7 +23,7 @@ setup(
         "ViNLP/datasets",
         "ViNLP/features",
         "ViNLP/models",
-        "ViNLP/pipelines",
+        "ViNLP/pipeline",
         "ViNLP/utils",
     ],
     include_package_data=True,
