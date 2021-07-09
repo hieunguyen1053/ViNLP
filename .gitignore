@@ -4,3 +4,6 @@
 **/__pycache__
 ViNLP/data/vlsp2013
 ViNLP/data/vlsp2016
+build
+dist
+ViNLP.egg-info

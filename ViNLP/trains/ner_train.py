@@ -18,4 +18,4 @@ model = NER_CRF(
 )
 
 model.fit(X_train, y_train, X_dev, y_dev)
-model.save("ViNLP/pipelines/bin/ner.crfsuite")
+model.save("ViNLP/pipeline/bin/ner.crfsuite")

@@ -48,6 +48,6 @@ postag_features = ChunkFeature()
 X_test, y_test = postag_features.transform(test_set.data)
 
 
-model = Chunk_CRF.load("ViNLP/pipelines/bin/chunk.crfsuite")
+model = Chunk_CRF.load("ViNLP/pipeline/bin/chunk.crfsuite")
 y_pred = model.predict(X_test)
 print(f_measure(y_test, y_pred))

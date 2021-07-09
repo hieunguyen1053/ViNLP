@@ -18,4 +18,4 @@ model = Chunk_CRF(
 )
 
 model.fit(X_train, y_train, X_dev, y_dev)
-model.save("ViNLP/pipelines/bin/chunk.crfsuite")
+model.save("ViNLP/pipeline/bin/chunk.crfsuite")

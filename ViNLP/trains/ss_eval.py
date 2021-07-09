@@ -1,12 +1,14 @@
-from ..datasets.ws_dataset import WSDataset
-from ..features.ws_feature import WSFeature
-from ..models.ws_crf import WS_CRF
+from ..datasets.ss_dataset import SSDataset
+from ..features.ss_feature import SSFeature
+from ..models.ss_crf import SS_CRF
 
 
 def _get_tags(sents):
     tags = []
     for sent_idx, iob_tags in enumerate(sents):
         for i, tag in enumerate(iob_tags):
+            if tag == 'O':
+                continue
             curr_tag = {'type': None, 'word_idx': None, 'sent_idx': None}
             curr_tag['type'] = tag
             curr_tag['word_idx'] = i
@@ -32,12 +34,12 @@ def f_measure(y_true, y_pred):
     return f1
 
 
-test_set = WSDataset('ViNLP/data/vlsp2013/ws/test.txt')
+test_set = SSDataset('ViNLP/data/sent_seg/test.txt')
 
-postag_features = WSFeature()
-X_test, y_test = postag_features.transform(test_set.data)
+ss_features = SSFeature()
+X_test, y_test = ss_features.transform(test_set.data)
 
 
-model = WS_CRF.load("ViNLP/pipeline/bin/ws.crfsuite")
+model = SS_CRF.load("ViNLP/pipeline/bin/ss.crfsuite")
 y_pred = model.predict(X_test)
 print(f_measure(y_test, y_pred))

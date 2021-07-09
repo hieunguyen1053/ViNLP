@@ -43,6 +43,6 @@ postag_features = POSFeature()
 X_test, y_test = postag_features.transform(test_set.data)
 
 
-model = POS_CRF.load("ViNLP/pipelines/bin/pos.crfsuite")
+model = POS_CRF.load("ViNLP/pipeline/bin/pos.crfsuite")
 y_pred = model.predict(X_test)
 print(f_measure(y_test, y_pred))
