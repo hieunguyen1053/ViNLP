@@ -2,7 +2,7 @@ from os import path
 
 from ..features.ss_feature import SSFeature
 from ..models.ss_crf import SS_CRF
-from ..utils.tokenize import tokenize
+from ..utils.regex_tokenize import tokenize
 
 crf_model = SS_CRF.load(path.join(path.dirname(__file__), "bin", "ss.crfsuite"))
 
