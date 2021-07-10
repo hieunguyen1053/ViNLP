@@ -204,7 +204,6 @@ def tokenize(text, format=None, tag=False):
     text = text.replace("\t", " ")
     matches = [m for m in re.finditer(patterns, text)]
     tokens = [extract_match(m) for m in matches]
-    print(tokens)
     if tag:
         return tokens
 

@@ -2,7 +2,7 @@ from os import path
 
 from ..features.ws_feature import WSFeature
 from ..models.ws_crf import WS_CRF
-from ..utils.tokenize import tokenize
+from ..utils.regex_tokenize import tokenize
 
 crf_model = WS_CRF.load(path.join(path.dirname(__file__), "bin", "ws.crfsuite"))
 
