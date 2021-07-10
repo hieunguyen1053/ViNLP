@@ -31,6 +31,7 @@ abbreviations = [
     f"{UPPER}+(?:\.{W}+)+\.?",
     f"{W}+['’]{W}+",  # ' ’ at middle of word
     # e.g. H'Mông, xã N’Thôn Hạ
+    r"TP",
     r"[A-ZĐ]+\.(?!$)",  # dot at the end of word
     r"Tp\.",
     r"Mr\.", "Mrs\.", "Ms\.",
@@ -40,8 +41,11 @@ abbreviations = [
     # e.g. 43H-0530
     r"NĐ-CP"
 ]
-abbreviations = "(?P<abbr>(" + "|".join(abbreviations) + "))"
-
+excludes = [
+    r"TP\.HCM\.",
+    r"TP\.BMT\.",
+]
+abbreviations = "(?P<abbr>(" + "|".join(abbreviations) + "))(?<!" + "|".join(excludes) + ")"
 """Priority 2
 """
 
@@ -200,7 +204,7 @@ def tokenize(text, format=None, tag=False):
     text = text.replace("\t", " ")
     matches = [m for m in re.finditer(patterns, text)]
     tokens = [extract_match(m) for m in matches]
-
+    print(tokens)
     if tag:
         return tokens
 

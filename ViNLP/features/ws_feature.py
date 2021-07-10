@@ -6,7 +6,7 @@ from .base_feature import BaseFeature
 words = Dictionary(path.join(path.dirname(__file__), "..", "data", "Viet74K.txt")).words
 lower_words = set([word.lower() for word in words])
 
-viwords = Dictionary(path.join(path.dirname(__file__), "..", "data", "ViDict.txt")).words
+viwords = Dictionary(path.join(path.dirname(__file__), "..", "data", "all-vietnamese-syllables.txt")).words
 lower_viwords = set([word.lower() for word in viwords])
 
 
@@ -39,7 +39,6 @@ class WSFeature(BaseFeature):
                 '[-1].is_vi_word'  : is_vi_word(word1),
                 '[-1].is_in_dict'  : is_in_dict(word1),
                 '[-1,0]'           : "%s_%s" % (word1, word),
-                '[-1:0].is_in_dict': is_in_dict("%s_%s" % (word1, word)),
             })
             if i > 1:
                 word2 = s[i - 2][0]
@@ -52,10 +51,8 @@ class WSFeature(BaseFeature):
                     '[-2].is_vi_word'   : is_vi_word(word2),
                     '[-2,-1]'           : "%s_%s" % (word2, word1),
                     '[-2,-1].istitle'   : word2.istitle() and word1.istitle(),
-                    '[-2,-1].is_in_dict': is_in_dict("%s_%s" % (word2, word1)),
                     '[-2,0]'            : "%s_%s_%s" % (word2, word1, word),
                     '[-2,0].istitle'    : word2.istitle() and word1.istitle() and word.istitle(),
-                    '[-2,0].is_in_dict' : is_in_dict("%s_%s_%s" % (word2, word1, word)),
                 })
         else:
             features['BOS'] = True
@@ -71,7 +68,6 @@ class WSFeature(BaseFeature):
                 '[+1].is_in_dict'  : is_in_dict(word1),
                 '[0,+1]'           : "%s_%s" % (word, word1),
                 '[0,+1].istitle'   : word.istitle() and word1.istitle(),
-                '[0,+1].is_in_dict': is_in_dict("%s_%s" % (word, word1)),
             })
             if i < len(s) - 2:
                 word2 = s[i + 2][0]
@@ -84,10 +80,8 @@ class WSFeature(BaseFeature):
                     '[+2].is_in_dict'   : is_in_dict(word2),
                     '[+1,+2]'           : "%s_%s" % (word1, word2),
                     '[+1,+2].istitle'   : word1.istitle() and word2.istitle(),
-                    '[+1,+2].is_in_dict': is_in_dict("%s_%s" % (word1, word2)),
                     '[0,+2]'            : "%s_%s_%s" % (word, word1, word2),
                     '[0,+2].istitle'    : word.istitle() and word1.istitle() and word2.istitle(),
-                    '[0,+2].is_in_dict' : is_in_dict("%s_%s_%s" % (word, word1, word2)),
                 })
         else:
             features['EOS'] = True
