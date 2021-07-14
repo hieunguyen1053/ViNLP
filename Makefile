@@ -1,3 +1,5 @@
+PYTHON = .venv/bin/python
+
 clean: clean-build clean-pyc
 
 clean-build:
@@ -13,13 +15,18 @@ clean-pyc:
 	find . -name '*~' -exec rm -f {} +
 	find . -name '__pycache__' -exec rm -fr {} +
 
-release: clean dist
+venv:
+	. .venv/bin/activate
+
+build: clean dist
+
+release: build
 	twine upload dist/*
 
-dist: clean
-	python setup.py sdist
-	python setup.py bdist_wheel
+dist: clean venv
+	$(PYTHON) setup.py sdist
+	$(PYTHON) setup.py bdist_wheel
 	ls -l dist
 
-install: clean
-	python setup.py install
+install: clean venv
+	$(PYTHON) setup.py install
