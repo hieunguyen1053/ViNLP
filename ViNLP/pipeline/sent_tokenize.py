@@ -21,4 +21,6 @@ def sent_tokenize(sentence):
         if tag == "EOS":
             output.append(' '.join(sent))
             sent = []
+    if len(sent) != 0:
+        output.append(' '.join(sent))
     return output
