@@ -108,10 +108,10 @@ phone = "(?P<phone>(" + "|".join(phone) + "))"
 datetime = [
     # date
     r"\d{1,2}\/\d{1,2}\/\d+",     # e.g. 02/05/2014
-    r"\d{1,2}\/\d{1,4}",          # e.g. 02/2014
+    r"\d{1,2}\/\d{2,4}",          # e.g. 02/2014
                                   #   [WIP] conflict with number 1/2 (a half)
     r"\d{1,2}-\d{1,2}-\d+",       # e.g. 02-03-2014
-    r"\d{1,2}-\d{1,4}",           # e.g. 08-2014
+    r"\d{1,2}-\d{2,4}",           # e.g. 08-2014
                                   #   [WIP] conflict with range 5-10 (from 5 to 10)
     r"\d{1,2}\.\d{1,2}\.\d+",     # e.g. 20.08.2014
     r"\d{4}\/\d{1,2}\/\d{1,2}",   # e.g. 2014/08/20
@@ -204,6 +204,7 @@ def tokenize(text, format=None, tag=False):
     text = text.replace("\t", " ")
     matches = [m for m in re.finditer(patterns, text)]
     tokens = [extract_match(m) for m in matches]
+    print(tokens)
     if tag:
         return tokens
 
