@@ -4,6 +4,8 @@
 **/__pycache__
 ViNLP/data/vlsp2013
 ViNLP/data/vlsp2016
+ViNLP/data/text-classification
+ViNLP/data/sentence-segmentation
 build
 dist
 ViNLP.egg-info

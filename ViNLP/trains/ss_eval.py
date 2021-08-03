@@ -34,7 +34,7 @@ def f_measure(y_true, y_pred):
     return f1
 
 
-test_set = SSDataset('ViNLP/data/sent_seg/test.txt')
+test_set = SSDataset('ViNLP/data/sentence-segmentation/test.txt')
 
 ss_features = SSFeature()
 X_test, y_test = ss_features.transform(test_set.data)

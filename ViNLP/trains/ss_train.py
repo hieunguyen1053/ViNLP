@@ -2,8 +2,8 @@ from ..datasets.ss_dataset import SSDataset
 from ..features.ss_feature import SSFeature
 from ..models.ss_crf import SS_CRF
 
-train_set = SSDataset('ViNLP/data/sent_seg/train.txt')
-dev_set = SSDataset('ViNLP/data/sent_seg/dev.txt')
+train_set = SSDataset('ViNLP/data/sentence-segmentation/train.txt')
+dev_set = SSDataset('ViNLP/data/sentence-segmentation/dev.txt')
 
 ss_feature = SSFeature()
 X_train, y_train = ss_feature.transform(train_set.data)
