@@ -12,7 +12,7 @@ X_dev, y_dev = chunk_features.transform(dev_set.data)
 model = Chunk_CRF(
     c1=1.0,
     c2=1e-3,
-    max_iterations=100,
+    max_iterations=50,
     all_possible_transitions=True,
     verbose=True,
 )

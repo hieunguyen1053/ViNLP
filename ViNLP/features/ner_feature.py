@@ -10,9 +10,9 @@ class NERFeature(BaseFeature):
             'bias'       : 1.0,
             '[0]'        : word,
             '[0].lower'  : word.lower(),
-            '[0].istitle': word.istitle(),
+            '[0].istitle': all(w.istitle() for w in word.split('_')),
             '[0].pos'    : pos,
-            '[0].chunk'  : chunk
+            '[0].chunk'  : chunk,
         }
         if i > 0:
             word1  = s[i - 1][0]
@@ -22,7 +22,7 @@ class NERFeature(BaseFeature):
             features.update({
                 '[-1]'        : word1,
                 '[-1].lower'  : word1.lower(),
-                '[-1].istitle': word1.istitle(),
+                '[-1].istitle': all(w.istitle() for w in word1.split('_')),
                 '[-1].pos'    : pos1,
                 '[-1].chunk'  : chunk1,
                 '[-1].ner'    : ner1,
@@ -38,7 +38,7 @@ class NERFeature(BaseFeature):
                 features.update({
                     '[-2]': word2,
                     '[-2].lower'   : word2.lower(),
-                    '[-2].istitle' : word2.istitle(),
+                    '[-2].istitle' : all(w.istitle() for w in word2.split('_')),
                     '[-2].pos'     : pos2,
                     '[-2].chunk'   : chunk2,
                     '[-2].ner'     : ner2,
@@ -47,8 +47,18 @@ class NERFeature(BaseFeature):
                     '[-2,-1].chunk': "%s %s" % (chunk2, chunk1),
                     '[-2,-1].ner'  : "%s %s" % (ner2, ner1),
                 })
+                if i > 2:
+                    ner3 = s[i - 3][3]
+                    features.update({
+                        '[-3].ner': ner3,
+                        '[-3,-2].ner': "%s %s" % (ner3, ner2),
+                    })
+                else:
+                    features['[-3].BOS'] = True
+            else:
+                features['[-2].BOS'] = True
         else:
-            features['BOS'] = True
+            features['[-1].BOS'] = True
 
         if i < len(s) - 1:
             word1  = s[i + 1][0]
@@ -57,7 +67,7 @@ class NERFeature(BaseFeature):
             features.update({
                 '[+1]'        : word1,
                 '[+1].lower'  : word1.lower(),
-                '[+1].istitle': word1.istitle(),
+                '[+1].istitle': all(w.istitle() for w in word1.split('_')),
                 '[+1].pos'    : pos1,
                 '[+1].chunk'  : chunk1,
                 '[0,+1]'      : "%s %s" % (word, word1),
@@ -71,13 +81,15 @@ class NERFeature(BaseFeature):
                 features.update({
                     '[+2]'         : word2,
                     '[+2].lower'   : word2.lower(),
-                    '[+2].istitle' : word2.istitle(),
+                    '[+2].istitle' : all(w.istitle() for w in word2.split('_')),
                     '[+2].pos'     : pos2,
                     '[+2].chunk'   : chunk2,
                     '[+1,+2]'      : "%s %s" % (word1, word2),
                     '[+1,+2].pos'  : "%s %s" % (pos1, pos2),
                     '[+1,+2].chunk': "%s %s" % (chunk1, chunk2),
                 })
+            else:
+                features['[+2].EOS'] = True
         else:
-            features['EOS'] = True
+            features['[+1].EOS'] = True
         return features

@@ -17,15 +17,15 @@ $ pip install ViNLP
 
 | Task              | F1(%) |
 | ----------------- | ----- |
-| Word segmentation | 98.64 |
+| Word segmentation | 98.06 |
 | Pos tagging       | 98.36 |
 
 ### Data VLSP 2016 (Use gold POS, Chunk label)
 
 | Task     | F1(%) |
 | -------- | ----- |
-| Chunking | 98.78 |
-| NER      | 92.69 | -->
+| Chunking | 98.80 |
+| NER      | 92.20 | -->
 
 ## Tutorials
 
