@@ -1,4 +1,5 @@
 # ViNLP
+[![Upload Python Package](https://github.com/hieunguyen1053/ViNLP/actions/workflows/python-publish.yml/badge.svg)](https://github.com/hieunguyen1053/ViNLP/actions/workflows/python-publish.yml)
 
 All tasks are trained on VLSP2013 and VLSP2016
 
