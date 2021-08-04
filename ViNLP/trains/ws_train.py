@@ -13,6 +13,7 @@ model = WS_CRF(
     c1=1.0,
     c2=1e-3,
     max_iterations=50,
+    all_possible_states=True,
     all_possible_transitions=True,
     verbose=True,
 )
