@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="ViNLP",
-    version="1.2.105",
+    version="1.2.106",
     description="NLP package for Vietnamese",
     long_description=long_description,
     long_description_content_type="text/markdown",

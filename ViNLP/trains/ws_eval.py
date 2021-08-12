@@ -6,11 +6,21 @@ from ..models.ws_crf import WS_CRF
 def _get_tags(sents):
     tags = []
     for sent_idx, iob_tags in enumerate(sents):
+        curr_tag = {'type': None, 'start_idx': None,
+                'end_idx': None, 'sent_idx': None}
         for i, tag in enumerate(iob_tags):
-            curr_tag = {'type': None, 'word_idx': None, 'sent_idx': None}
-            curr_tag['type'] = tag
-            curr_tag['word_idx'] = i
-            curr_tag['sent_idx'] = sent_idx
+            if tag.startswith('B') and curr_tag['type']:
+                tags.append(tuple(curr_tag.values()))
+                curr_tag = {'type': None, 'start_idx': None,
+                            'end_idx': None, 'sent_idx': None}
+            if tag.startswith('B'):
+                curr_tag['type'] = tag[2:]
+                curr_tag['start_idx'] = i
+                curr_tag['end_idx'] = i
+                curr_tag['sent_idx'] = sent_idx
+            elif tag.startswith('I'):
+                curr_tag['end_idx'] = i
+        if curr_tag['type']:
             tags.append(tuple(curr_tag.values()))
     tags = set(tags)
     return tags

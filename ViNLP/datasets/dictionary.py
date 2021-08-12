@@ -11,6 +11,5 @@ class Dictionary:
         if not self._words:
             content = read(self.filepath).strip()
             words = content.split('\n')
-            words = map(lambda x: '_'.join(x.split()), words)
             self._words = list(words)
         return self._words
